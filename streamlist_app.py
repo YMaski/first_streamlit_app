@@ -24,7 +24,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 #display the table on the page
 streamlit.dataframe(fruits_to_show)
 
-def get_fruityvice_data(this_fruit_choice):
+def get_fruityvice_data(this_fruit_choice): 
      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice )  
      fruityvice_normalized = pandas.json_normalize(fruityvice_response.json()) 
      return fruityvice_normalized 
@@ -47,10 +47,10 @@ def get_fruit_load_list():
           my_cur.execute("select * from fruit_load_list")
           return mycur.fetchall()
      
- if streamlit.button('Get Fruit load List'):
-    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    my_data_rows = get_fruit_load_list()
-    streamlit.dataframe(my_data_rows)
+ if streamlit.button('Get Fruit load List'): 
+     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+     my_data_rows = get_fruit_load_list()
+     streamlit.dataframe(my_data_rows)
 
 streamlit.stop()
 
